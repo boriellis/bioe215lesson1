@@ -43,10 +43,6 @@ Now you're good! when you make changes that you want to save you go to the git p
 
 
 
-IN PROGRESS
-
-
-
 
 
 
