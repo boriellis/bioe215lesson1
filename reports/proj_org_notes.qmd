@@ -16,10 +16,7 @@ This guide is my notes on:
 
 ### ON A NEW COMPUTER:
 
-Step 1)
-Make sure github, R, and RStudio are all up to date. To check that git is installed on your computer and the right version run \`git \--version\` in RStudio's Terminal pane (not the Console pane). 
-
-
+Step 1) Make sure github, R, and RStudio are all up to date. To check that git is installed on your computer and the right version run \`git \--version\` in RStudio's Terminal pane (not the Console pane).
 
 ### EVERY TIME:
 
@@ -27,25 +24,17 @@ Step 2)
 
 Make an RStudio Project and git repository (this is the bit that's local to my machine)
 
-In RStudio, it's file -\> New Project, then New Directory -\> New Project
-Name your project according to normal R naming conventions.
-You should save it to a subfolder you make in Documents called GitHub (it's called github on my laptop) and make sure that "create a github repository" is checked. Then click Create Project. Make sure you see a git pane and the name of your project in the top bar!
-
-
+In RStudio, it's file -\> New Project, then New Directory -\> New Project Name your project according to normal R naming conventions. You should save it to a subfolder you make in Documents called GitHub (it's called github on my laptop) and make sure that "create a github repository" is checked. Then click Create Project. Make sure you see a git pane and the name of your project in the top bar!
 
 Step 3) Make your github repository (this is the bit that's remote)
 
-First make sure that the package `usethis` is installed
-In the **TERMINAL** pane, run `git config --list` and make sure your git username and email are correct.
+First make sure that the package `usethis` is installed In the **TERMINAL** pane, run `git config --list` and make sure your git username and email are correct.
 
 Now you need to set up or use a personal access token, which I think keeps your crap safe. You DON'T need to do this every time you set up a new repository - these steps are if you're doing it from scratch and don't have an access token, but I think it works if you have one to just start with the second line, ask it for the password, and then say "keep the existing credentials and abort update" and move on from there.
 
-In **console**, call `usethis::create_github_token()` and give your token a name in the browser.
-Then run `gitcreds::gitcreds_set()` and enter the password from the new access token page
+In **console**, call `usethis::create_github_token()` and give your token a name in the browser. Then run `gitcreds::gitcreds_set()` and enter the password from the new access token page
 
-then run `usethis::use_git()` and enter 1 (this is you committing the uncommited files)
-then run `usethis::git_default_branch_rename()` (you shouldn't get an error, if you do it might be because you forgot the last step)
-then run `usethis::use_github()` SICK! now you should be redirected to a new github repository
+then run `usethis::use_git()` and enter 1 (this is you committing the uncommited files) then run `usethis::git_default_branch_rename()` (you shouldn't get an error, if you do it might be because you forgot the last step) then run `usethis::use_github()` SICK! now you should be redirected to a new github repository
 
 STEP 4)
 
@@ -71,12 +60,38 @@ In RStudio under the "Files" pane there's a new folder button. use that to make 
 
 -   The scripts that actually do things are stored in the root directory, but if your project has many scripts, you might want to organize them in a directory of their own.
 
-
 There's a way to get github to ignore big files that you shouldn't store on github (too large or not public) - you should ask max what to do with this
 
 Empty folders won't get pushed, so if you want the folder structure to live on as you switch between computers you can put a text file in there to keep them alive.
 
+STEP 5)
 
-Now you're good! when you make changes that you want to save you go to the git pane, hit commit, then you push it to github, and then you can keep an eye on it in your github repo if you want (it'll take a couple minutes to update)
+Make sure pages on github is set up for this repository
 
+-   On the top bar in your repo, click on settings
 
+-   Under "code and automation" click on Pages
+
+-   Source - deploy from branch should be selected
+
+-   Under branch select main
+
+-   under root select docs
+
+-   click save
+
+Now you're good! when you make changes that you want to save you go to the git pane, hit commit, then you push it to github, and then you can keep an eye on it in your github repo if you want under "ACTIONS" (it'll take a couple minutes to update, and if you go and you don't see it updating it's because you forgot to enable pages!) I also think it won't work right until you actually have something in docs for it to deploy.
+
+### Loading in data from projects:
+
+load the package `here` and then you can do filepaths like this:
+
+`bor_nestlings <- read_csv(here::here("data/73_species.csv"))`
+
+apparently you can also use `../data/73_species.csv` to go up a level in your filepath
+
+### Using quarto:
+
+In your reports folder, make a quarto doc, called index.qmd if you want it to be the landing page for your project
+
+open the doc and switch to visual mode (if u want)

@@ -4,4 +4,4 @@ This is my project website for the Computational Project Organization lesson of 
 
 The reading assessment answers are [here](reading.md).
 
-My project organization notes are [here](proj_org_notes.md).
+My project organization notes are [here](https://boriellis.github.io/bioe215lesson1/proj_org_notes.html).
